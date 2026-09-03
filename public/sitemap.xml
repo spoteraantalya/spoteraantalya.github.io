@@ -30,4 +30,22 @@
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://spoteraantalya.github.io/hizmetler/muratpasa-ikinci-el-esya-alanlar</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spoteraantalya.github.io/hizmetler/konyaalti-ikinci-el-esya-alanlar</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://spoteraantalya.github.io/hizmetler/kepez-ikinci-el-esya-alanlar</loc>
+    <lastmod>2026-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 </urlset>

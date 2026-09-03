@@ -302,6 +302,22 @@ export default function Home() {
             <h2 className="mt-3 text-3xl font-bold tracking-[-.045em]">Antalya merkezden adresine geliyoruz.</h2>
             <p className="mt-4 max-w-md leading-7 text-black/62">{siteConfig.publicLocation}</p>
             <p className="mt-2 max-w-md text-sm leading-6 text-black/54">{siteConfig.locationNote}</p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {[
+                ['Muratpaşa', 'muratpasa-ikinci-el-esya-alanlar'],
+                ['Konyaaltı', 'konyaalti-ikinci-el-esya-alanlar'],
+                ['Kepez', 'kepez-ikinci-el-esya-alanlar'],
+              ].map(([area, slug]) => (
+                <Link
+                  key={area}
+                  href={`/hizmetler/${slug}`}
+                  prefetch={false}
+                  className="rounded-full border border-black/14 bg-white/48 px-4 py-2 text-xs font-bold transition-colors hover:bg-white"
+                >
+                  {area} ikinci el eşya
+                </Link>
+              ))}
+            </div>
             <a href={siteConfig.phoneHref} className="mt-7 inline-flex items-center gap-2 text-sm font-bold underline decoration-2 underline-offset-4">
               Konum bilgisi için ara <Phone className="size-4" />
             </a>
