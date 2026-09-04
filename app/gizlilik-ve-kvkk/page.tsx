@@ -29,7 +29,7 @@ const sections = [
   },
   {
     title: 'Çerezler ve Google Analytics',
-    text: 'Zorunlu olmayan analiz çerezleri yalnızca ziyaretçi kabul ettiğinde etkinleştirilir. Google Analytics; ziyaret sayısı, görüntülenen sayfalar, yaklaşık konum, cihaz ve tarayıcı bilgileri ile WhatsApp veya telefon iletişim düğmesine tıklama gibi etkileşimleri ölçmek için kullanılabilir. Mesaj içeriği, eşya fotoğrafı veya telefon numarası Google Analytics’e gönderilmez. _ga ve _ga_<kimlik> adlı birinci taraf çerezlerin varsayılan kullanım süresi en fazla 2 yıldır. Tercihinizi sayfanın altındaki “Çerez tercihleri” bağlantısından değiştirebilirsiniz.',
+    text: 'Zorunlu olmayan analiz ve reklam ölçüm çerezleri yalnızca ziyaretçi kabul ettiğinde etkinleştirilir. Google Analytics ve bağlantı kurulması halinde Google Ads; ziyaret sayısı, görüntülenen sayfalar, yaklaşık konum, cihaz ve tarayıcı bilgileri ile WhatsApp veya telefon iletişim düğmesine tıklama gibi etkileşimleri ölçmek için kullanılabilir. Mesaj içeriği, eşya fotoğrafı veya telefon numarası bu ölçüm araçlarına gönderilmez ve kişiselleştirilmiş reklam izni verilmez. _ga ve _ga_<kimlik> adlı birinci taraf çerezlerin varsayılan kullanım süresi en fazla 2 yıldır. Tercihinizi sayfanın altındaki “Çerez tercihleri” bağlantısından değiştirebilirsiniz.',
   },
   {
     title: 'Haklarınız',

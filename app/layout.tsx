@@ -41,13 +41,11 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
-  const analyticsId = process.env.NEXT_PUBLIC_GA_ID || '';
-
   return (
     <html lang="tr">
       <body className={`${geist.variable} antialiased`}>
         {children}
-        <GoogleAnalytics measurementId={analyticsId} />
+        <GoogleAnalytics measurementId={siteConfig.analyticsId} />
       </body>
     </html>
   );

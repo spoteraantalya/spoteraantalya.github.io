@@ -24,8 +24,8 @@ function setConsentState(state: 'granted' | 'denied') {
 
   window.gtag('consent', 'update', {
     ad_storage: state,
-    ad_user_data: state,
-    ad_personalization: state,
+    ad_user_data: 'denied',
+    ad_personalization: 'denied',
     analytics_storage: state,
   });
 }
@@ -129,9 +129,9 @@ export function GoogleAnalytics({ measurementId }: { measurementId: string }) {
       aria-label="Çerez tercihleri"
       className="fixed inset-x-4 bottom-4 z-[100] mx-auto max-w-2xl rounded-[24px] border border-black/10 bg-[#10130f] p-5 text-white shadow-2xl sm:bottom-6 sm:p-6"
     >
-      <p className="text-base font-bold tracking-[-.02em]">Analiz çerezleri tercihiniz</p>
+      <p className="text-base font-bold tracking-[-.02em]">Analiz ve reklam ölçümü tercihiniz</p>
       <p className="mt-2 text-sm leading-6 text-white/68">
-        Sitenin kullanımını ve WhatsApp/telefon tıklamalarını ölçmek için Google Analytics kullanmak istiyoruz. Kabul etmezseniz analiz etiketi yüklenmez.
+        Sitenin kullanımını ve reklam dönüşümlerini ölçmek için Google Analytics ile Google Ads kullanmak istiyoruz. Kabul etmezseniz ölçüm etiketi yüklenmez; kişiselleştirilmiş reklam izni verilmez.
       </p>
       <div className="mt-4 flex flex-wrap items-center gap-3">
         <button
