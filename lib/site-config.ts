@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: 'SpotEra',
   slogan: 'İkinci elin yeni dönemi.',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://spoteraantalya.github.io',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://spoteraantalya.com',
   phoneDisplay: '0532 277 54 00',
   phoneE164: '+905322775400',
   phoneHref: 'tel:+905322775400',

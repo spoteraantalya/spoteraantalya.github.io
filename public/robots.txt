@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://spoteraantalya.github.io/sitemap.xml
+Sitemap: https://spoteraantalya.com/sitemap.xml
