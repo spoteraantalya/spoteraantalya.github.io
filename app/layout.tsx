@@ -24,15 +24,18 @@ export const metadata: Metadata = {
     title: 'Antalya İkinci El Eşya Alanlar | SpotEra',
     description:
       'Mobilya ve beyaz eşyalarınızın fotoğraflarını gönderin; anında fiyat bilgisi ve ücretsiz ekspertiz alın.',
-    images: [{ url: '/og.png', width: 1536, height: 1024, alt: 'SpotEra — İkinci elin yeni dönemi' }],
+    images: [{ url: '/og.jpg', width: 1732, height: 908, alt: 'SpotEra — İkinci elin yeni dönemi' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Antalya İkinci El Eşya Alanlar | SpotEra',
     description: 'Fotoğraf gönderin, anında fiyat bilgisi ve ücretsiz ekspertiz alın.',
-    images: ['/og.png'],
+    images: ['/og.jpg'],
   },
   icons: { icon: '/favicon.svg' },
+  applicationName: 'SpotEra',
+  category: 'İkinci el eşya alım satım',
+  robots: { index: true, follow: true },
   formatDetection: { telephone: false, address: false, email: false },
 };
 

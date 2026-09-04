@@ -1,4 +1,5 @@
 import { ArrowUpRight, Clock3, Mail, MapPin, Phone } from 'lucide-react';
+import Link from 'next/link';
 
 import { Brand } from '@/components/brand';
 import { sellWhatsappUrl, siteConfig } from '@/lib/site-config';
@@ -61,7 +62,10 @@ export function SiteFooter() {
 
         <div className="flex flex-col gap-3 px-2 pt-7 text-xs text-white/42 sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 SpotEra · Gül Ticaret kuruluşudur.</p>
-          <p>Antalya · Muratpaşa · Konyaaltı · Kepez</p>
+          <div className="flex flex-wrap gap-x-4 gap-y-2">
+            <p>Antalya · Muratpaşa · Konyaaltı · Kepez</p>
+            <Link href="/gizlilik-ve-kvkk" prefetch={false} className="underline decoration-white/25 underline-offset-4 hover:text-white">Gizlilik ve KVKK</Link>
+          </div>
         </div>
       </div>
     </footer>

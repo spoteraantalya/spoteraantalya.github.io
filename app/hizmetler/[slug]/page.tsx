@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
 import { ArrowLeft, ArrowUpRight, Camera, Check, MapPin, MessageCircle, Phone } from 'lucide-react';
 import Link from 'next/link';
+import { notFound } from 'next/navigation';
 
+import { MobileContactBar } from '@/components/mobile-contact-bar';
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
 import { buttonVariants } from '@/components/ui/button';
 import { getServicePage, servicePages } from '@/lib/service-pages';
-import { sellWhatsappUrl, siteConfig } from '@/lib/site-config';
+import { siteConfig, whatsappUrl } from '@/lib/site-config';
 import { cn } from '@/lib/utils';
 
 export function generateStaticParams() {
@@ -26,10 +28,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       title: page.metaTitle,
       description: page.metaDescription,
       url: `/hizmetler/${page.slug}`,
+      images: [],
     },
     twitter: {
       title: page.metaTitle,
       description: page.metaDescription,
+      images: [],
     },
   };
 }
@@ -38,20 +42,24 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
   const { slug } = await params;
   const page = getServicePage(slug);
 
-  if (!page) {
-    return (
-      <main className="min-h-screen bg-[#f5f3ec]">
-        <SiteHeader />
-        <div className="mx-auto max-w-3xl px-5 py-32 text-center">
-          <h1 className="text-5xl font-bold tracking-[-.055em]">Sayfa bulunamadı.</h1>
-          <Link href="/" prefetch={false} className="mt-8 inline-flex items-center gap-2 font-bold text-[#2452FF]"><ArrowLeft className="size-4" /> Ana sayfaya dön</Link>
-        </div>
-      </main>
-    );
-  }
+  if (!page) notFound();
+
+  const pageWhatsappUrl = whatsappUrl(
+    `Merhaba SpotEra, “${page.title}” hizmetiniz için fiyat almak istiyorum. İlçem: … Fotoğrafları gönderiyorum.`,
+  );
+
+  const breadcrumbSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Ana sayfa', item: siteConfig.url },
+      { '@type': 'ListItem', position: 2, name: page.shortTitle, item: `${siteConfig.url}/hizmetler/${page.slug}` },
+    ],
+  };
 
   return (
     <main className="min-h-screen bg-[#f5f3ec] text-[#11150f]">
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
       <SiteHeader />
 
       <section className="px-3 pt-3 sm:px-5 sm:pt-5">
@@ -64,7 +72,7 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
               <p className="mt-7 max-w-2xl text-base leading-7 text-white/68 sm:text-lg sm:leading-8">{page.lead}</p>
             </div>
             <div className="mt-12 flex flex-col gap-3 sm:flex-row">
-              <a href={sellWhatsappUrl} target="_blank" rel="noreferrer" className={cn(buttonVariants({ size: 'lg' }), 'h-14 rounded-full bg-[#C9FF55] px-6 font-bold text-[#11150f] hover:bg-white')}>
+              <a href={pageWhatsappUrl} target="_blank" rel="noreferrer" className={cn(buttonVariants({ size: 'lg' }), 'h-14 rounded-full bg-[#C9FF55] px-6 font-bold text-[#11150f] hover:bg-white')}>
                 <Camera className="size-5" /> Fotoğraf gönder, fiyat al <ArrowUpRight className="size-4" />
               </a>
               <a href={siteConfig.phoneHref} className={cn(buttonVariants({ variant: 'outline', size: 'lg' }), 'h-14 rounded-full border-white/22 bg-white/8 px-6 text-white hover:bg-white hover:text-[#11150f]')}>
@@ -108,13 +116,14 @@ export default async function ServiceDetail({ params }: { params: Promise<{ slug
             <div className="flex items-center gap-2 text-sm font-bold"><MapPin className="size-4" /> Antalya merkez</div>
             <h2 className="mt-3 text-3xl font-bold tracking-[-.045em]">Muratpaşa, Konyaaltı ve Kepez’den alım yapıyoruz.</h2>
           </div>
-          <a href={sellWhatsappUrl} target="_blank" rel="noreferrer" className="inline-flex h-13 items-center justify-center gap-2 rounded-full bg-[#11150f] px-6 text-sm font-bold text-white">
+          <a href={pageWhatsappUrl} target="_blank" rel="noreferrer" className="inline-flex h-13 items-center justify-center gap-2 rounded-full bg-[#11150f] px-6 text-sm font-bold text-white">
             <MessageCircle className="size-5" /> Ücretsiz fiyat al
           </a>
         </div>
       </section>
 
       <SiteFooter />
+      <MobileContactBar whatsappUrl={pageWhatsappUrl} />
     </main>
   );
 }

@@ -19,7 +19,7 @@ export function whatsappUrl(message: string) {
 }
 
 export const sellWhatsappUrl = whatsappUrl(
-  'Merhaba SpotEra, ikinci el eşyam için fiyat almak istiyorum. Fotoğrafları gönderiyorum.',
+  'Merhaba SpotEra, ikinci el eşyam için fiyat almak istiyorum. İlçem: … Fotoğrafları gönderiyorum.',
 );
 
 export const buyWhatsappUrl = whatsappUrl(

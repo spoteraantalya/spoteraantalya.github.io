@@ -23,6 +23,7 @@ import Link from 'next/link';
 
 import { SiteFooter } from '@/components/site-footer';
 import { SiteHeader } from '@/components/site-header';
+import { MobileContactBar } from '@/components/mobile-contact-bar';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { buttonVariants } from '@/components/ui/button';
 import { buyWhatsappUrl, sellWhatsappUrl, siteConfig } from '@/lib/site-config';
@@ -58,6 +59,14 @@ const faqs = [
     q: 'Eşyayı siz mi alıyorsunuz?',
     a: 'Teklifte anlaşılması halinde alım planını ve adres bilgilerini sizinle netleştiriyor, eşyayı adresinizden teslim alıyoruz.',
   },
+  {
+    q: 'SpotEra bir spotçu mu?',
+    a: 'Evet. SpotEra, Gül Ticaret bünyesinde Antalya merkezde hizmet veren modern bir ikinci el eşya ve spot alım satım markasıdır. Süreci telefon ve WhatsApp üzerinden hızlı, açık ve kolay şekilde yürütür.',
+  },
+  {
+    q: 'İkinci el eşyamı Antalya’da nereye satabilirim?',
+    a: 'Muratpaşa, Konyaaltı veya Kepez’deyseniz mobilya ve beyaz eşyanızın fotoğraflarını SpotEra’ya WhatsApp’tan gönderebilirsiniz. Ücretsiz ön değerlendirme sonrası uygun bulunursa fiyat ve teslim alma planı paylaşılır.',
+  },
 ];
 
 const localBusinessSchema = {
@@ -71,22 +80,49 @@ const localBusinessSchema = {
   url: siteConfig.url,
   openingHours: 'Mo-Su 09:00-20:00',
   areaServed: siteConfig.serviceAreas.map((name) => ({ '@type': 'AdministrativeArea', name })),
+  image: `${siteConfig.url}/spotera-profile.png`,
+  logo: `${siteConfig.url}/spotera-profile.png`,
+  slogan: siteConfig.slogan,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: siteConfig.phoneE164,
+    contactType: 'sales',
+    availableLanguage: 'Turkish',
+    areaServed: 'TR-07',
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    opens: '09:00',
+    closes: '20:00',
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.q,
+    acceptedAnswer: { '@type': 'Answer', text: faq.a },
+  })),
 };
 
 export default function Home() {
   return (
     <main id="top" className="min-h-screen overflow-x-hidden bg-[#f5f3ec] text-[#11150f]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <SiteHeader />
 
       <section className="relative mx-auto max-w-[1440px] px-3 pt-3 sm:px-5 sm:pt-5 lg:px-7">
         <div className="relative min-h-[calc(100svh-108px)] overflow-hidden rounded-[26px] bg-[#161b15] sm:min-h-[720px] sm:rounded-[36px]">
           <Image
-            src="/spotera-hero.png"
+            src="/spotera-hero.jpg"
             alt="Antalya’da evindeki koltuk takımını SpotEra uzmanıyla değerlendiren müşteri"
             className="absolute inset-0 h-full w-full object-cover object-[64%_center] sm:object-center"
-            width="1536"
-            height="1024"
+            width="1586"
+            height="992"
             priority
           />
           <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(12,15,11,.91)_0%,rgba(12,15,11,.74)_35%,rgba(12,15,11,.16)_68%,rgba(12,15,11,.08)_100%)] max-sm:bg-[linear-gradient(180deg,rgba(12,15,11,.82)_0%,rgba(12,15,11,.55)_52%,rgba(12,15,11,.92)_100%)]" />
@@ -94,7 +130,7 @@ export default function Home() {
           <div className="relative z-10 flex min-h-[calc(100svh-108px)] flex-col justify-between px-6 py-7 sm:min-h-[720px] sm:px-10 sm:py-10 lg:px-16 lg:py-14">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-[#C9FF55]">
               <span className="size-2 rounded-full bg-[#C9FF55] shadow-[0_0_0_6px_rgba(201,255,85,.12)]" />
-              Antalya’da ikinci elin yeni dönemi
+              Antalya’nın modern spotçusu
             </div>
 
             <div className="max-w-[720px] py-12 sm:py-16">
@@ -261,7 +297,7 @@ export default function Home() {
               <p className="section-kicker">Neden SpotEra?</p>
               <h2 className="section-title mt-4">Eski usul karmaşa yok. Net bir süreç var.</h2>
               <p className="mt-6 max-w-lg leading-7 text-black/58">
-                Antalya’da ikinci el eşya satmayı daha anlaşılır, hızlı ve güven veren bir deneyime dönüştürüyoruz.
+                Antalya’da spotçuya eşya satmayı daha anlaşılır, hızlı ve güven veren bir deneyime dönüştürüyoruz.
               </p>
             </div>
 
@@ -343,13 +379,7 @@ export default function Home() {
       </section>
 
       <SiteFooter />
-
-      <div className="fixed inset-x-3 bottom-3 z-50 flex gap-2 rounded-full border border-black/10 bg-[#f5f3ec]/94 p-2 shadow-[0_15px_45px_rgba(17,21,15,.18)] backdrop-blur-xl sm:hidden">
-        <a href={siteConfig.phoneHref} className="grid size-12 shrink-0 place-items-center rounded-full bg-white" aria-label="SpotEra’yı ara"><Phone className="size-5" /></a>
-        <a href={sellWhatsappUrl} target="_blank" rel="noreferrer" className="flex h-12 flex-1 items-center justify-center gap-2 rounded-full bg-[#C9FF55] text-sm font-bold text-[#11150f]">
-          <MessageCircle className="size-5" /> WhatsApp’tan fiyat al
-        </a>
-      </div>
+      <MobileContactBar />
 
       <a href="#top" aria-label="Sayfanın başına dön" className="fixed bottom-7 right-7 z-40 hidden size-11 place-items-center rounded-full border border-black/10 bg-white shadow-lg lg:grid">
         <ArrowDown className="size-4 rotate-180" />
