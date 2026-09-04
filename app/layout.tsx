@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Geist } from 'next/font/google';
 
+import { GoogleAnalytics } from '@/components/google-analytics';
 import { siteConfig } from '@/lib/site-config';
 
 import './globals.css';
@@ -40,9 +41,14 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const analyticsId = process.env.NEXT_PUBLIC_GA_ID || '';
+
   return (
     <html lang="tr">
-      <body className={`${geist.variable} antialiased`}>{children}</body>
+      <body className={`${geist.variable} antialiased`}>
+        {children}
+        <GoogleAnalytics measurementId={analyticsId} />
+      </body>
     </html>
   );
 }

@@ -2,6 +2,7 @@ import { ArrowUpRight, Clock3, Mail, MapPin, Phone } from 'lucide-react';
 import Link from 'next/link';
 
 import { Brand } from '@/components/brand';
+import { CookiePreferencesButton } from '@/components/cookie-preferences-button';
 import { sellWhatsappUrl, siteConfig } from '@/lib/site-config';
 
 export function SiteFooter() {
@@ -65,6 +66,7 @@ export function SiteFooter() {
           <div className="flex flex-wrap gap-x-4 gap-y-2">
             <p>Antalya · Muratpaşa · Konyaaltı · Kepez</p>
             <Link href="/gizlilik-ve-kvkk" prefetch={false} className="underline decoration-white/25 underline-offset-4 hover:text-white">Gizlilik ve KVKK</Link>
+            {process.env.NEXT_PUBLIC_GA_ID ? <CookiePreferencesButton /> : null}
           </div>
         </div>
       </div>

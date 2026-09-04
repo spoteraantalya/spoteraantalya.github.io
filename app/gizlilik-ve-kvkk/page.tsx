@@ -28,6 +28,10 @@ const sections = [
     text: 'Kişisel veriler, bir sözleşmenin kurulması veya ifasıyla doğrudan ilgili olması, hukuki yükümlülüklerin yerine getirilmesi ve temel haklarınıza zarar vermemek kaydıyla meşru menfaatler kapsamında işlenebilir. Gerektiğinde yetkili kamu kurumlarıyla ve yalnızca hizmetin yürütülmesi için destek alınan taraflarla paylaşılabilir. WhatsApp kullanıldığında veriler WhatsApp/Meta altyapısı üzerinden de işlenebilir.',
   },
   {
+    title: 'Çerezler ve Google Analytics',
+    text: 'Zorunlu olmayan analiz çerezleri yalnızca ziyaretçi kabul ettiğinde etkinleştirilir. Google Analytics; ziyaret sayısı, görüntülenen sayfalar, yaklaşık konum, cihaz ve tarayıcı bilgileri ile WhatsApp veya telefon iletişim düğmesine tıklama gibi etkileşimleri ölçmek için kullanılabilir. Mesaj içeriği, eşya fotoğrafı veya telefon numarası Google Analytics’e gönderilmez. _ga ve _ga_<kimlik> adlı birinci taraf çerezlerin varsayılan kullanım süresi en fazla 2 yıldır. Tercihinizi sayfanın altındaki “Çerez tercihleri” bağlantısından değiştirebilirsiniz.',
+  },
+  {
     title: 'Haklarınız',
     text: '6698 sayılı Kişisel Verilerin Korunması Kanunu’nun 11. maddesi kapsamındaki taleplerinizi kimliğinizi ve talebinizi açıkça belirterek e-posta yoluyla Gül Ticaret’e iletebilirsiniz. Başvurular, mevzuatta öngörülen süre ve usule göre değerlendirilir.',
   },
