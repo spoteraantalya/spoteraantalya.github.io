@@ -1,9 +1,9 @@
-import { Menu, MessageCircle } from 'lucide-react';
+import { Menu, MessageCircle, PhoneCall } from 'lucide-react';
 import Link from 'next/link';
 
 import { Brand } from '@/components/brand';
 import { buttonVariants } from '@/components/ui/button';
-import { sellWhatsappUrl } from '@/lib/site-config';
+import { sellWhatsappUrl, siteConfig } from '@/lib/site-config';
 import { cn } from '@/lib/utils';
 
 export function SiteHeader() {
@@ -21,19 +21,36 @@ export function SiteHeader() {
           <Link prefetch={false} className="transition-colors hover:text-[#2452FF]" href="/#iletisim">İletişim</Link>
         </nav>
 
-        <a
-          href={sellWhatsappUrl}
-          target="_blank"
-          rel="noreferrer"
-          className={cn(
-            buttonVariants({ size: 'lg' }),
-            'h-11 rounded-full bg-[#11150f] px-5 text-sm text-white shadow-none hover:bg-[#2452FF]',
-          )}
-        >
-          <MessageCircle className="size-4" />
-          <span className="hidden sm:inline">Ücretsiz fiyat al</span>
-          <span className="sm:hidden">Fiyat al</span>
-        </a>
+        <div className="flex items-center gap-2 sm:gap-3">
+          <a
+            href={siteConfig.phoneHref}
+            aria-label={`SpotEra’yı ara: ${siteConfig.phoneDisplay}`}
+            className="group flex h-12 items-center gap-2 rounded-full bg-[#C9FF55] px-3 text-[#11150f] shadow-[0_8px_22px_rgba(17,21,15,.12)] transition-transform hover:-translate-y-0.5 sm:gap-3 sm:px-4"
+          >
+            <span className="hidden size-8 shrink-0 place-items-center rounded-full bg-[#11150f] text-white sm:grid">
+              <PhoneCall className="size-4" />
+            </span>
+            <span className="text-left leading-none">
+              <span className="hidden text-[10px] font-bold uppercase tracking-[.13em] text-black/52 sm:block">Hemen ara</span>
+              <span className="block whitespace-nowrap text-[13px] font-extrabold tracking-[-.02em] sm:mt-1 sm:text-base">
+                {siteConfig.phoneDisplay}
+              </span>
+            </span>
+          </a>
+
+          <a
+            href={sellWhatsappUrl}
+            target="_blank"
+            rel="noreferrer"
+            className={cn(
+              buttonVariants({ size: 'lg' }),
+              'hidden h-12 rounded-full bg-[#11150f] px-5 text-sm text-white shadow-none hover:bg-[#2452FF] xl:inline-flex',
+            )}
+          >
+            <MessageCircle className="size-4" />
+            WhatsApp’tan fiyat al
+          </a>
+        </div>
 
         <Menu className="hidden" aria-hidden="true" />
       </div>
